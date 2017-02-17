@@ -6,21 +6,51 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script type="text/javascript">
+  	
+  	// $("#search").click(function(){
+  	// $("#head").css("visibility","hidden");
+  	// });
+
+  			$(document).ready(function(){
+  			$("#searchpeople").keyup(function(){
+  			name=$("#searchpeople").val();
+
+  			$.ajax({
+  			url:"http://services.trainees.baabtra.com/BM-41794NIHAL/index.php/Searchs/people",
+  			type:'get',
+  			dataType:'json',
+  			data:{search:name},
+  			success:function(result){
+  					console.log(result);
+  			},
+  			error:function(){
+  				document.write("sorry");
+
+  			}
+  				
+
+  					})
+
+  	})
+
+  	});
+  </script>
 	<title></title>
 	<style type="text/css">
 
 	.bghead{
 			background-color: #4867aa;
   			}
-        .haris
+        .nihal
         {
           width: 30%;
-          height:5%;
-          margin-top: 10px;
+          height:8%;
+          margin-top: 10%;
 
         }
         .input-box{
-          margin-top: 8px;
+          margin-top: 0.9%;
         }
     .bgmain
     {
@@ -30,30 +60,31 @@
    {
     
     border:1px solid #d6dbea;
-    height:150px;
-    margin-bottom: 10px;
+    height:30%;
+    margin-bottom: 2%;
     background-color: white;
    }
    .div11
    {
      border:1px solid #d6dbea;
-    height:500px;
-    border-radius: 3px;    
+    height:100%;
+    border-radius: 0.5%;    
     background-color: white;
    }
    .div2
    {
      border:1px solid #d6dbea;
-    height:660px;
+    height:200%;
   
-    margin-left: 10px;
-    background-color: white;
+    margin-left:0.8%;
+    /*background-color: white;*/
    }
    .divad
    {
     background-color: #4867aa;
-    height: 600px;
+    height: 60%;
     margin-left: 8px;
+    position: static;
    }
 	</style>
 </head>
@@ -65,16 +96,22 @@
     <div class="row bghead">
 
       <div class="col-md-5 col-md-offset-1 input-box">
-        <form class="form-horizontal" role="form">
+        <!-- <form class="form-horizontal" role="form"> -->
           <div class="form-group ">
             <!-- <i class="glyphicon glyphicon-search"></i> -->
-            <input type="text" name="" class="form-control" placeholder="Search Facebook">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div></form>
+            <form action="<?php echo base_url().'index.php/search/people'?>">
+            <input type="text" style="width: 50%" name="search" id="searchpeople"  placeholder="Search Facebook">
+            </form>
+            <button type="submit" id="search">
+    <span class="glyphicon glyphicon-search"></span> Search
+  </button>
+         </div>
+       <!-- </form> -->
       </div>
 
+
       <div class="col-md-1 col-md-offset-2">
-        <img class="haris" src="<?php echo $value[0]['profpic']; ?>">
+        <img class="nihal" src="<?php echo $value[0]['profpic']; ?>">
         <span style="color: white"><?php echo $value[0]['chr_fname']; ?></span>
       </div>   
 
@@ -98,7 +135,7 @@
 
 
          <div class="col-md-5"><br>
-          <div class="row">
+          <div class="row" id="head">
             <div class="col-md-12 div1">
               <div class="row">
                 <span style="color:blue" class="col-md-2 glyphicon glyphicon-edit"><strong style="color:black">update</strong></span><span class="col-md-1">|</span>
@@ -117,6 +154,7 @@
              </div>
           </div>
           <div class="col-md-12 div11">
+
           </div>
           </div>
          </div>
@@ -125,7 +163,7 @@
         <div class="row">
         <div class="text-muted h4 col-md-12">your adds</div>
         <div class="col-md-12"><hr></div>
-        <div class="col-md-11 divad"></div>
+        <div class="col-md-10 divad"></div>
         </div>
         </div>
         
